@@ -1,0 +1,596 @@
+/*
+ Theme Name:   Zerius
+ Description:  Zerius is a modern responsive Wordpress Theme. It's perfect for web agencies, digital studios, corporate, product showcase, personal and business portfolio. Easy to configure and to customize, this theme provides multiple features into a clean design
+ Author:       Themeisle
+ Author URI:   https://themeisle.com
+ Template:     zerif-lite
+ Version:      1.0.1
+ License:      GNU General Public License version 2
+ License URI:  license.txt
+ Tags:          black, gray, red, white, one-column, two-columns, right-sidebar, responsive-layout, custom-background, custom-menu, editor-style, featured-images, threaded-comments, translation-ready
+*/
+
+
+/*--------------------------------------------------------------
+General
+--------------------------------------------------------------*/
+@import url(//fonts.googleapis.com/css?family=Titillium+Web:400,300,300italic,200italic,200,400italic,600,600italic,700,700italic,900);
+
+.entry-content a {
+	color: #fc5f45;
+}
+.entry-content a:visited {
+	color: #fc5f45;
+}
+.entry-content a:hover {
+	color: #ea4747;
+}
+
+/*--------------------------------------------------------------
+Header
+--------------------------------------------------------------*/
+
+.navbar {
+	background: rgba(31,33,36, 0.9) !important;
+}
+.navbar-inverse .navbar-nav ul.sub-menu {
+	background: rgba(31,33,36, 1) !important;
+}
+
+#main-nav{
+
+	border-bottom: 3px solid #FC5F45 !important;
+
+}
+.navbar-right-search{
+	float: right !important;
+	background: url('images/search.png') no-repeat;
+	height: 22px;
+	margin-top: 28px;
+	padding-left: 20px;
+	margin-left: 20px;
+	cursor:pointer;
+}
+
+
+
+.header-search{
+	background: #FC5F45;
+	position: absolute;
+	width: 100%;
+	text-align:center !important;
+
+}
+
+
+
+.search-field{
+	width: 550px;
+	border-radius: 4px !important;
+	height: 31px !important;
+	padding-top: 1px !important;
+	border: 1px solid #cf4f3a !important;
+}
+.header-search-submit{
+	background: #2E3037 !important;
+	color: #fff !important;
+	padding: 8px 30px !important;
+	font-family: 'Titillium Web', sans-serif;
+}
+.header-search-submit:hover{
+	background: #404040 !important;
+	
+}
+
+
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .main-navigation > ul > li > a {
+
+	padding: 0px 15px !important;
+	color: #919495 !important;
+	border-radius: 4px !important;
+	margin-right: 5px !important;
+	/*font-family: 'Titillium Web', sans-serif;*/
+	text-transform: uppercase !important;
+	font-weight: bold;
+	font-size: 16px;
+
+
+}
+.focus {
+	background: #fff url("images/shattered.png") !important; 
+	color: #c0cdcf !important;
+}
+.focus h5 {
+	color: #454545 !important;
+}
+.focus h6 {
+	color: #858585 !important;
+}
+.navbar-inverse .navbar-nav ul.sub-menu li a {
+	padding: 0px 10px !important;
+	color: white !important;
+}
+.navbar-inverse .navbar-nav ul.sub-menu li:hover > a {
+	padding: 0px 15px !important;
+	color: white !important;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+	/*background-color: #fc5f45;*/
+	padding: 0px 15px !important;
+	color: white !important;
+}
+.nav li a.nav-active {
+	color: #fc5f45 !important;
+}
+.nav li a.nav-active:before {
+	background: #fc5f45 !important;
+}
+.header {
+	min-height: 0;
+}
+.header {
+	background: rgba(51,67,70, 0.5) !important;
+}
+.intro-text {
+	color: #FFF !important;
+}
+
+/*--------------------------------------------------------------
+Content
+--------------------------------------------------------------*/
+.dark-text {
+	color: #2e3037 !important;
+}
+h2.white-text {
+	color: #fff !important;
+}
+.works {
+	background: #f5f5f5 !important;
+}
+.about-us {
+	background: #2e3037 !important;
+	color: #c0cdcf !important;
+}
+.red-btn {
+	border-radius: 5px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #fc5f45 !important;
+	position: relative;
+	background: rgba(252,95,69, 0.8) !important;
+	font-family: 'Titillium Web', sans-serif;
+}
+.red-btn:hover {
+    border-width: 2px;
+	border-style: solid;
+    border-color: #fc5f45 !important;
+    background: #fc5f45 !important;
+}
+.green-btn {
+	border-radius: 5px;
+    border-width: 2px;
+	border-style: solid;
+    border-color: #98A0A2;
+    position: relative;
+    background: rgba(145,148,149,0.8) !important;
+}
+.green-btn:hover {
+    border-width: 2px;
+	border-style: solid;
+    border-color: rgba(100,100,100, 1) !important;
+    background: rgba(100,100,100,0.8) !important;
+
+}
+.comment-form #submit, .comment-reply-link,.submit{
+	color: #fff !important;
+	border-radius: 1px;
+	border-width: 2px;
+	position: relative;
+	background: black !important;
+}
+
+
+
+.intro-text {	
+	padding: 15px 0;
+}
+.testimonial {
+	background: #fc5f45 !important;
+}
+.feedback-box .message {
+	color: #334346 !important;
+	font-family: 'Titillium Web', sans-serif;
+}
+.our-team {
+	/*background: #f5f5f5 !important;*/
+	background: #fff url("images/agsquare.png") !important; 
+
+}
+.textarea-box {
+	border-radius: 0;
+}
+body{
+	background: #fdfdfd;
+}
+
+
+.entry-title:before {
+	content: "";
+	background: #fc5f45 !important;
+}
+.entry-title a:hover{
+	color: #ea4747 !important;
+}
+.entry-title, 
+.entry-title a, 
+.widget-title, 
+.widget-title a {
+	color: #334346;
+}
+.widget .widget-title:before {
+	content: "";
+	background: #fc5f45 !important;
+}
+
+
+.section-header h2{
+	text-transform: capitalize !important;
+}
+
+.section-header h6{
+	color: #919495 !important;
+
+}
+.logged-in-as a {
+
+	color: #fc5f45 !important;
+}
+
+.fn a {
+
+	color: #fc5f45 !important;
+}
+
+
+body, button, input, select, textarea {
+	color: #1f2124 !important;
+}
+
+/* Selection colours (easy to forget) */
+::selection {
+	background: #2e3037 !important;
+	color: #FFF !important;
+}
+
+.skill input{
+	color: #fff !important;
+}
+
+::-moz-selection {
+	background: #fc5f45 !important;
+	color: #fff !important;
+}
+.testimonial h2 {
+	color: #FFF !important;
+}
+#client-feedbacks .feedback-box {
+	border-radius: 1px;
+}
+.input-box {
+	border-radius: 1px;
+	background: rgba(255,255,255, 1) !important;
+}
+.textarea-box {
+	border-radius: 1px;
+	background: rgba(255,255,255, 1) !important;
+}
+.newsletter {
+	background: #fc5f45 !important;
+	color: white !important;
+}
+.newsletter h3 {
+	text-transform: capitalize;
+	color: white !important;
+}
+
+.separator-one {
+	background: rgba(46, 48, 55, 0.9) !important;
+}
+.separator-one .green-btn {
+	border-radius: 1px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #ea4747;
+	position: relative;
+	background: rgba(234,71,71,0.9) !important;
+}
+.separator-one .green-btn:hover {
+	background: rgba(234,71,71,1) !important;
+}
+.purchase-now {
+	background: rgba(234, 71, 71, 0.9) !important;
+}
+.purchase-now .red-btn {
+	float: right;
+	border-radius: 1px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: rgba(51,67,70, 1) !important;
+	position: relative;
+	background: rgba(51,67,70, 0.8) !important;
+}
+.purchase-now .red-btn:hover {
+	background: rgba(51,67,70, 1) !important;
+}
+.latest-news h6 {
+	color: #334346 !important;
+}
+.focus-box .service-icon {
+	border: 10px solid #cecece !important;
+}
+.focus-box p {
+	font-family: 'Titillium Web', sans-serif !important;
+	color: #919495 !important;
+}
+.service-icon a:hover{
+	color:red !important;
+
+}
+.status {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	background-image: url(images/load.gif) !important;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: -100px 0 0 -100px;
+}
+
+#loader .loader-icon {
+	background: url(images/load.gif) no-repeat center center !important;
+	background-color: #FFF;
+	margin: -22px -22px;
+	top: 50%;
+	left: 50%;
+	z-index: 10000;
+	position: fixed;
+	width: 44px;
+	height: 44px;
+	-webkit-background-size: 30px 30px;
+	background-size: 30px 30px;
+	border-radius: 5px;
+}
+
+
+.position{
+	color: #919495 !important;
+	font-size: 14px !important;
+}
+#pricingtable{
+	background: #fff url("images/noise.png") !important; 
+	/*background-color: #2e3037 !important;*/
+}
+
+
+
+.red-border-bottom:before {
+	background: #fc5f45 !important;
+}
+.about-us p {
+	color: #919495 !important;
+	font-family: "Titillium Web",sans-serif !important;
+}
+
+.white-text {
+	color: #f6f6f6 !important;
+}
+
+
+.about-us .big-intro {
+	color: #FFF !important;
+}
+.latest-news {
+	background: #f5f5f5 !important;
+}
+#carousel-homepage-latestnews .item .latestnews-box .latestnews-title a:before {
+	content: "";
+	background: #fc5f45 !important;
+}
+.copyright {
+	background: rgba(0,0,0,0.3) !important;
+	color: #919495 !important;
+	font-family: 'Titillium Web', sans-serif !important;
+	font-weight: 600;
+}
+
+.package-header{
+	background: #cf4f3a !important;
+	
+}
+}
+.focus-box .service-icon .pixeden {
+	border:none !important;
+}
+.pixeden {
+	height: 100% !important;
+}
+
+/*.dark-bg {
+
+	background: #2e3037 !important;
+
+}*/
+.package a{
+
+	background:  #434343 !important;
+}
+
+.comments-area input[type="text"],
+.comments-area input[type="email"],
+.comments-area input[type="url"],
+.comments-area textarea {
+	background: #2e3037 !important;
+	color: #FFF !important;
+}
+
+.entry-content p {
+	color: #2e3037 !important;
+	font-family: 'Titillium Web', sans-serif;
+
+}
+.comments-area{
+	color: #2e3037 !important;
+
+}
+
+
+.comment-form #submit,
+.comment-reply-link {
+	color: #fff !important;
+	border-radius: 1px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #919495;
+	position: relative;
+	background: #919495 !important;
+	border-radius: 5px !important;
+	font-family: 'Titillium Web', sans-serif;
+}
+.comment-form #submit:hover,
+.comment-reply-link:hover {
+	border-color: #2e3037 !important;
+	background: #2e3037 !important;
+}
+.widget_search input {
+	background: #2e3037 !important;
+	color: #FFF !important; 
+}
+
+.social-icons ul li a:hover{
+	color: #fecc17 !important;
+	
+}
+
+.company-details {
+	color: #c0cdcf !important;
+}
+.zerif-copyright-box {
+	color: #c0cdcf !important;
+}
+.zerif-copyright {
+	color: #fc5f45 !important;
+}
+.zerif-copyright:hover {
+	opacity: 0.8;
+}
+.our-team .row > div .red-border-bottom:before {
+	background: #fc5f45 !important;
+}
+.team-member .social-icons ul li a {
+	background: none;
+}
+.team-member .social-icons ul li a:hover {
+	color: #fc5f45 !important;
+}
+.social-icons .widget li:before {
+	content: '';
+	display: none;
+}
+.packages {
+	background: rgba(51, 67, 70, 1) !important;
+}
+
+.red-text{
+
+	color: #919495 !important ;
+}
+.carousel-control .icon-prev, .carousel-control .icon-next, .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+    position: absolute;
+    top: 30% !important;
+    z-index: 5;
+    display: inline-block;
+}
+
+/*--------------------------------------------------------------
+Footer
+--------------------------------------------------------------*/
+#footer {
+	background: #2e3037 !important;
+}
+.copyright {
+  background: rgba(0,0,0,0.3) !important;
+}
+
+.social li a {
+	color: #919495  !important;
+	font-size: 18px;
+}
+
+.social li a:hover {
+	color: #fff !important;
+	font-size: 18px;
+}
+.company-details {
+	color: #919495 !important;
+	font-family: 'Titillium Web', sans-serif;
+	font-weight: 600;
+}
+
+
+
+
+/* 
+
+
+mov deschis #919495
+mov inchis #2e3037
+mov foarte inchis #1f2124
+portocaliu #fc5f45
+
+
+*/
+
+
+
+#wrapper {
+/*	display:none; */
+    padding-top: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+#wrapper.toggled {
+    display: block;
+     -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+
+}
+
+.header-search {
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.header-search.toggled {
+	height: 57px;
+	opacity: 1;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+

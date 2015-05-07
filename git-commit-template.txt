@@ -1,0 +1,19 @@
+# Enter a good 1-line / 50 characters overview below this line
+
+
+# Enter the description of your changes below this line
+
+
+# Fill-in values for the fields below as appropriate.
+
+Testing Done:
+
+# Bug number:
+Bug Number:
+
+# If checkin addresses multiple bugs, put the additional bugs on a different row each.
+# Bug Number:
+
+# Reviewed by: comma-separated list people's id
+Reviewed by:
+

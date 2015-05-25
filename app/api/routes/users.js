@@ -574,15 +574,17 @@ var users = {
             });
 
 
-           logger.info("adding commonvalues for a new user");
-            var valueskeys = req.body.fields.common_values_list;
-            var usercommonvalues = _.each(commonsadhanas.valueslist.values, function(obj) {
+           
+            var valueskeys = req.body.fields.common_value_list;
+            //	logger.info("Request body", JSON.stringify(req.body));
+            //	logger.info("adding commonvalues for a new user", valueskeys);
+            var common_values = _.each(commonsadhanas.valueslist.values, function(obj) {
 
-                //logger.info("next sadhana"+JSON.stringify(obj));
+                //	logger.info("next sadhana"+JSON.stringify(obj));
 
                 if (_.contains(valueskeys, obj.id)) {
 
-                    // logger.info("obj.id "+ obj.id + " true");
+                     //	logger.info("obj.id "+ obj.id + " true");
 
                     return _.extend(obj, {
                         "selected": true
@@ -590,7 +592,7 @@ var users = {
 
                 } else {
 
-                    //logger.info("obj.id "+ obj.id + " false");
+                    //	logger.info("obj.id "+ obj.id + " false");
 
                     return _.extend(obj, {
                         "selected": false
@@ -600,11 +602,7 @@ var users = {
 
             });
 
-            logger.info("usercommonvalues ",JSON.stringify(usercommonvalues));
-
-
-
-
+            //logger.info("usercommonvalues ",JSON.stringify(common_values));
 
 
             // [ { "text": "sairam custom practice 1",       "description": ""},{"text": "sairam custom practice 2","description": ""}]
@@ -625,6 +623,25 @@ var users = {
 
           //  logger.info("custom_Sadhanas" + JSON.stringify(custom_sadhanas));
 
+            
+            var custom_value_id = 1;
+            var custom_values = _.map(req.body.fields.custom_value_list.text,
+                function(obj, key) {
+                    // console.log("obj", obj);
+
+                    var cvalues = {
+                        "id": custom_value_id,
+                        "text": utils.encrypt(obj),
+                        "description": ""
+                    };
+                    custom_value_id = custom_value_id + 1;
+                    return cvalues;
+                });
+
+
+          //  logger.info("custom_Sadhanas" + JSON.stringify(custom_values));
+
+            
             logger.info("agegroup = ",req.body.fields.group);
 
             var updatePayload = {
@@ -667,7 +684,11 @@ var users = {
                 },
                 {
                     "type": 5,
-                    "values": usercommonvalues
+                    "values": common_values
+                },
+                {
+                    "type": 6,
+                    "values": custom_values
                 },
                 ]
             };
@@ -1076,6 +1097,25 @@ function sadhakaSadhanaList(req, callback) {
 
                 /********  added logic to get common sadhan decription */
                 /*********** ends here the logic ****/   
+                 
+     var customvalues=_.findWhere(data[0].sadhanaregistrations, {
+                     "type": 6
+                 });
+
+          if(customvalues !=null){
+
+        	  customvalues.values=_.map(customvalues.values,function(obj,key){
+
+                 //logger.info("before decrypt", JSON.stringify(obj));
+               obj.text = utils.decrypt(obj.text);
+               //logger.info("after decrypt", JSON.stringify(obj));
+               return obj;
+             });
+             data[0].sadhanaregistrations[5]=customvalues;
+          }
+
+         /*********** ends here the logic ****/   
+
                 callback(data);
                  logger.info("           } \n");
             }

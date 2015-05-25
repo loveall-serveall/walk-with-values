@@ -1,0 +1,22 @@
+{"userid":58,"fields":
+    {"common_list":["1","2","4","5","6","7"],
+     "custom_list":["sairam custom practice 1","sairam custom practice 2"],
+     "healthybody_goal":"HB Goal Register",
+     "healthybody_subgoals":"<p>sairam test desc</p>\r\n",
+     "healthymind_goal":"HM Goal register",
+     "healthymind_subgoals":"<p>test desc</p>\r\n","affiliation":"Elk Grove","group":"YA"
+    }
+}
+
+
+
+{"userid":58,"fields":
+    {"common_list":[1,2,3,5,6,7],
+     "custom_list":[
+       {"text":"sairam custom practice 1"},{"text":"sairam custom practice 2"}],
+     "healthybody_goal":"HB Goal Register",
+     "healthybody_subgoals":"<p>sairam test desc</p>\r\n",
+     "healthymind_goal":"HM Goal register",
+     "healthymind_subgoals":"<p>test desc</p>\r\n","affiliation":"Elk Grove","group":"YA"
+    }
+}

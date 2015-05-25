@@ -1,0 +1,54 @@
+{
+    "wwvapp": {
+             "gameconfig" :{
+                "maxqs":20
+              },
+
+            "pushconfig" :{
+             	"gcmconfig": {
+                       "key":"yourgcmkeyhere"
+             	}
+            },
+ 	    "AWS" :{
+                  "AA_KEY" :"aws aakey here",
+                  "AA_SSS_BUC":"awsbucket"
+
+            },
+           "PUSH" :{
+             "GCM" :{
+                  "APIKEY":"GCMAPIKEY"
+
+             }
+           },
+           "db":{
+
+                 "host" :"novus.modulusmongo.net",
+                 "dbname":"donknow",
+                 "port":"27019",
+                 "testp" : {
+                  "host" :"localhost",
+                 "dbname":"wwvdb",
+                 "uid":"wwvdbAdmin",
+                 "pwd":"welcome1",
+                 "port":"27071"},
+                 "test" : {
+                  "host" :"ds034348.mongolab.com",
+                 "dbname":"wwvdb",
+                 "uid":"wwvdbadmin",
+                 "pwd":"welcome1",
+                 "port":"34348"},
+                 "testmod" : {
+                  "host" :"proximus.modulusmongo.net",
+                 "dbname":"yg9Iqexe",
+                 "uid":"wwvadmin",
+                 "pwd":"welcome1",
+                 "port":"27017"}
+           },
+           "logging":{
+              "filename" : "ServerName.log"
+           },
+           "server":{
+             "port" : "4000"
+           }
+ }
+}

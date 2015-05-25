@@ -1,0 +1,118 @@
+{
+    "sadhanaslist": {
+        "type": 1,
+        "sadhanas": [{
+
+            "text": "Daily Prayer",
+            "description": "Daily Prayer for World Peace",
+            "id": 1,
+            "img": "s6.jpg",
+            "webimg": "1.prayer.png",
+            "page_id": "95"
+        }, {
+
+            "text": "Keep Spine Erect",
+            "description": "Keep spine erect always (walking, sitting, sleeping)",
+            "id": 2,
+            "img": "s9.png",
+            "webimg": "2.spine.png",
+            "page_id": "97"
+        }, {
+
+            "text": "No distraction during meals",
+            "description": "Television, cell phones, other gadgets",
+            "id": 3,
+            "img": "s8.jpg",
+            "webimg": "3.no-tv.png",
+            "page_id": "99"
+        }, {
+
+            "text": "Eliminate White Sugar",
+            "description": "Eliminate white sugar, reduce simple carbs (white rice etc)",
+            "id": 4,
+            "img": "s3.jpg",
+            "webimg": "4.no-sugar.png",
+            "page_id": "101"
+        }, {
+
+            "text": "Drink Ample Water",
+            "description": "Drink lot of water",
+            "id": 5,
+            "img": "s2.jpg",
+            "webimg": "5.water.png",
+            "page_id": "103"
+        }, {
+
+            "text": "Balance Food Intake",
+            "description": "Divide the stomach into four equal parts and fill two parts with solid food and one part with liquid food leaving the fourth part empty.",
+            "id": 6,
+            "img": "s8.jpg",
+            "webimg": "6.stomach.png",
+            "page_id": "105"
+        }, {
+
+            "text": "Oral Care",
+            "description": "Practice oral hygiene (brush twice a day)",
+            "id": 7,
+            "img": "s5.jpg",
+            "webimg": "7.brush.png",
+            "page_id": "107"
+        }, {
+
+            "text": "Reduce, Recycle & Reuse",
+            "description": "Reduce, Recycle, Reuse (Conserve Water; Minimize use of plastics)",
+            "id": 8,
+            "img": "s7.jpg",
+            "webimg": "8.recycle.png",
+            "page_id": "111"
+        }, {
+
+            "text": "Silent Sitting",
+            "description": "Silent sitting for self-evaluation / introspection",
+            "id": 9,
+            "img": "s4.jpg",
+            "webimg": "9.silentsitting.png",
+            "page_id": "109"
+        }]
+    },
+    "valueslist": {
+        "type": 5,
+        "values": [{
+            "text": "Did I do all my activities with an attitude of service and duty?",
+            "description": "",
+            "id": 1,
+            "img": "",
+            "webimg": "",
+            "page_id": "95"
+        }, {
+            "text": "Was I truthful all through the day; was there unity  in my thought, word, and deed?",
+            "description": "",
+            "id": 2,
+            "img": "",
+            "webimg": "",
+            "page_id": "95"
+        }, {
+            "text": "Was I calm and always connected with my heart before responding to situations?",
+            "description": "",
+            "id": 3,
+            "img": "",
+            "webimg": "",
+            "page_id": "95"
+        }, {
+            "text": "Was I able to understand others and look beyond their behavior ?",
+            "description": "",
+            "id": 4,
+            "img": "",
+            "webimg": "",
+            "page_id": "95"
+        }, {
+            "text": "Did I go through the day with love, joy, kindness, and compassion?",
+            "description": "",
+            "id": 5,
+            "img": "",
+            "webimg": "",
+            "page_id": "95"
+        }]
+    }
+
+}

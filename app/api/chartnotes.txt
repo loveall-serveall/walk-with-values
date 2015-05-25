@@ -1,0 +1,246 @@
+<?php
+/**
+ * View Page: Custom Charts build using Highcharts
+ * Description: This plugin contains the core functions and libraries used by walkwithvalues.org portal for rendering custom charts.
+ */
+include( plugin_dir_path( __FILE__ ) . 'daily-practice-user-progress-data.php'); 
+include( plugin_dir_path( __FILE__ ) . 'daily-practice-group-progress-data.php'); 
+?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript">
+</script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('#group-progress-chart-container').highcharts({
+        title: {
+            text: 'Group Daily Practice Progress',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: Submitted by Registered Members',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Mar 4', 'Mar 5', 'Mar 6', 'Mar 7', 'Mar 9', 'Mar 8',
+                'Mar 9', 'Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14']
+        },
+        yAxis: {
+            title: {
+                text: 'Count Of Members Who Logged Their Progress'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: ' People Successfully Practiced Today'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Daily Prayer',
+            data: [10.0, 11, 9, 15, 16, 20, 19, 22, 23, 22, 22, 23]
+        }, {
+            name: 'Silent Sitting',
+            data: [11, 12, 13, 17, 17, 22, 24, 26, 26, 26, 25, 28]
+        }, {
+            name: 'No Gadgets While Eating',
+            data: [6, 6, 5, 8, 7, 7, 8, 9, 9, 8, 10, 9]
+        }, {
+            name: 'Balanced Food Intake',
+            data: [3, 3, 4, 5, 6, 9, 11, 11, 14, 20, 19, 20]
+        }, {
+            name: 'Eliminate While Sugar',
+            data: [2, 3, 3, 3, 3, 3, 4, 5, 5, 5, 7, 6]
+        }, {
+            name: 'Drink Ample Water',
+            data: [11, 11, 14, 15, 13, 17, 18, 19, 19, 18, 20, 20]
+        }, {
+            name: 'Keep Spine Erect',
+            data: [6, 5, 5, 8, 7, 8, 8, 9, 9, 8, 11, 13]
+        }, {
+            name: 'Twice-A-Day-Brush',
+            data: [8, 10, 10, 11, 6, 9, 8, 9, 9, 8, 10, 11]
+        }, {
+            name: 'Reduce Recycle & Reuse',
+            data: [6, 6, 5, 8, 7, 7, 8, 9, 9, 8, 10, 9]
+        }]
+    });
+});
+</script>
+<script type="text/javascript">
+$(function () {
+    $('#last-10-day-progress-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'My Daily Practice Tracker'
+        },
+        xAxis: {
+            title: {
+                text: 'Progress For 10 Days'
+            },
+            categories: ['Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9','Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14']
+        },
+        
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'All My Registered Practices'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                color: 'lightgreen',
+                dataLabels: {
+                    enabled: false,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }
+        },
+        series: [<?php echo $last_10_days_data; ?>]
+    });
+});
+</script>
+<script type="text/javascript">
+$(function () {
+    $('#last-10-day-dummy-progress-container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'My Daily Practice Tracker'
+        },
+        xAxis: {
+            title: {
+                text: 'Progress For Last 10 Days'
+            },
+            categories: ['Mar 5', 'Mar 6', 'Mar 7', 'Mar 8', 'Mar 9','Mar 10', 'Mar 11', 'Mar 12', 'Mar 13', 'Mar 14']
+        },
+        
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'All My Signed-Up Common Practices'
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+        plotOptions: {
+            column: {
+                stacking: 'normal',
+                color: 'lightgreen',
+                dataLabels: {
+                    enabled: false,
+                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                    style: {
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'Daily Prayer',
+            data: [1, 1, 1, {
+                y: 1,
+                color: 'red',
+                dataLabels: {
+                    enabled: false
+            }
+            }, 1, 1, 1, 1, 1, 1]
+        }, {
+            name: 'Silent Sitting',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }, {
+            name: 'No Gadgets While Eating',
+            data: [1, 1, 1, 1, 1, 1, 1, {
+                y: 1,
+                color: 'red',
+                dataLabels: {
+                    enabled: false
+            }
+            }, 1, 1]
+        }, {
+            name: 'Balanced Food Intake',
+            data: [1, 1, 1, 1, 1, 1, 1, {
+                y: 1,
+                color: 'red',
+                dataLabels: {
+                    enabled: false
+            }
+            }, 1, 1]
+        }, {
+            name: 'Eliminate White Sugar',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }, {
+            name: 'Drink Ample Water',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }, {
+            name: 'Keep Spine Erect',
+            data: [1, 1, 1, 1, 1, 1, 1, {
+                y: 1,
+                color: 'red',
+                dataLabels: {
+                    enabled: false
+            }
+            }, 1, 1]
+        }, {
+            name: 'Oral Care',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }, {
+            name: 'Reduce Recycle & Reuse',
+            data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        }]
+    });
+});
+</script>

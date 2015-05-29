@@ -226,6 +226,8 @@ var users = {
                         var type2tracks = [];
                         var type3tracks = [];
                         var type4tracks = [];
+                        var type5tracks = [];
+                        var type6tracks = [];
 
                         if (fordatetrack.length == 1 && fordatetrack[0].track.length == 1) {
 
@@ -237,6 +239,8 @@ var users = {
                             type2tracks = fordatetrack[0].track[0].tracked[1].tracked;
                             type3tracks = fordatetrack[0].track[0].tracked[2].tracked;
                             type4tracks = fordatetrack[0].track[0].tracked[3].tracked;
+                            type5tracks = fordatetrack[0].track[0].tracked[4].tracked;
+                            //type6tracks = fordatetrack[0].track[0].tracked[5].tracked;
                             //logger.info("type1tracks",type1tracks);
 
 
@@ -304,6 +308,26 @@ var users = {
 
                             });
 
+                        if (sadhanasregs.length > 4){
+                            sadhanasregs[4].values = _.each(sadhanasregs[4].values, function(obj) {
+                                //logger.info("next sadhana"+JSON.stringify(obj));
+                            	 var item = _.find(type5tracks, function(track){
+                            		return track.id === obj.id;
+                            	});
+                                if (!_.isUndefined(item)) {
+                                    return _.extend(obj, {
+                                        "checked": true,
+                                        "score": item.score
+                                    });
+
+                                } else {
+                                    return _.extend(obj, {
+                                        "checked": false
+                                    });
+                                }
+
+                            });
+                        }
 
                         res.end(JSON.stringify(sadhanasregs));
                          logger.info("           } \n");

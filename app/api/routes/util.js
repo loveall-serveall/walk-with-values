@@ -39,7 +39,15 @@ function getSadhanas(callback){
 
 
 var utils = {
-   
+ reportExecTime: function(hrstart,message,flag){
+
+    if(false || flag){
+      var hrend = process.hrtime(hrstart); 
+      logger.info(message+ " In  %ds %dms", hrend[0], hrend[1]/1000000);
+               
+    }
+
+  },  
  encrypt: function(text){
   var cipher = crypto.createCipher(algorithm,password+'wwv')
   var crypted = cipher.update(text,'utf8','hex')

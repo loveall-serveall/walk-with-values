@@ -83,35 +83,45 @@
             "id": 1,
             "img": "",
             "webimg": "",
-            "page_id": "95"
+            "page_id": "95",
+            "name" : "Right Conduct",
+            "scale" : 3
         }, {
             "text": "Was I truthful all through the day; was there unity  in my thought, word, and deed?",
             "description": "",
             "id": 2,
             "img": "",
             "webimg": "",
-            "page_id": "95"
+            "page_id": "95",
+            "name" : "Truth",
+            "scale" : 3
         }, {
             "text": "Was I calm and always connected with my heart before responding to situations?",
             "description": "",
             "id": 3,
             "img": "",
             "webimg": "",
-            "page_id": "95"
+            "page_id": "95",
+            "name" : "Peace",
+            "scale" : 3
         }, {
             "text": "Was I able to understand others and look beyond their behavior ?",
             "description": "",
             "id": 4,
             "img": "",
             "webimg": "",
-            "page_id": "95"
+            "page_id": "95",
+            "name" : "Non Voilence",
+            "scale" : 3
         }, {
             "text": "Did I go through the day with love, joy, kindness, and compassion?",
             "description": "",
             "id": 5,
             "img": "",
             "webimg": "",
-            "page_id": "95"
+            "page_id": "95",
+            "name" : "Love",
+            "scale" : 3
         }]
     }
 

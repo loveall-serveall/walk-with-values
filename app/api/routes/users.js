@@ -10,12 +10,28 @@ var _ = require('underscore');
 
 var bcrypt = require('bcrypt-nodejs');
 var pushutils = require("./pushutils");
+var start = process.hrtime();
 
 
 var users = {
 
     // track a date specific progress from the website for a user
     // post - /webscreenTracked/:userid/:fordate
+    // current payload 
+    /*{"sdate":"08/09/2015",
+      "common_list":["1","5","9"],
+      "custom_list":"",
+      "healthybody_goal":"",
+      "healthybody_subgoals":"",
+      "healthymind_goal":"",
+      "healthymind_subgoals":"",
+      "hb_cbox":"10",
+      "hm_cbox":"11",
+      "human_values":"",
+      "user_defined_values":"",
+      "hv_rbtns":"",
+      "user_defined_hv_rbtns":""}
+    */
     webscreenTracked: function(req, res) {
         logger.info("{ webscreenTracked - \n for userid   {"+req.params.userid+"} invoked")
         var fordateRequest = req.params.fordate;
@@ -26,6 +42,8 @@ var users = {
         }
         
         logger.info('userid', req.params.userid, " sadhanlist : ", "fordateRequest :", fordateRequest);
+
+        logger.info("payload == ",JSON.stringify(req.body.fields));
 
         // update process
         // 1. read curent tracking.
@@ -239,7 +257,7 @@ var users = {
                             type2tracks = fordatetrack[0].track[0].tracked[1].tracked;
                             type3tracks = fordatetrack[0].track[0].tracked[2].tracked;
                             type4tracks = fordatetrack[0].track[0].tracked[3].tracked;
-                            type5tracks = fordatetrack[0].track[0].tracked[4].tracked;
+                            //type5tracks = fordatetrack[0].track[0].tracked[4].tracked;
                             //type6tracks = fordatetrack[0].track[0].tracked[5].tracked;
                             //logger.info("type1tracks",type1tracks);
 
@@ -353,7 +371,7 @@ var users = {
         }
         //console.log('++++++++:::::id',req.params.userid," sadhanlist" ,req.body);
 
-        logger.info('{sadhanasTracked - \n userid', req.params.userid, " sadhanlist : ", "fordateRequest :", fordateRequest);
+        logger.info('++++++++++++++++ {sadhanasTracked - \n userid', req.params.userid, " sadhanlist : ", "fordateRequest :", fordateRequest," payload :",req.body);
 
         // update process
         // 1. read curent tracking.
@@ -656,8 +674,10 @@ var users = {
                     var cvalues = {
                         "id": custom_value_id,
                         "text": utils.encrypt(obj),
-                        "description": ""
-                    };
+                        "description": "",
+                        "scale": 3,
+                        "checked": false,
+                     };
                     custom_value_id = custom_value_id + 1;
                     return cvalues;
                 });
@@ -794,7 +814,19 @@ var users = {
 
     // create a new user after creating it in mysql..
     // post /users
-
+/*
+{
+    "user_login" : "jagshetty",
+    "first_name" : "Jagdeesh",
+    "last_name" : "Shetty",
+    "user_pass" : "testing",
+    "nickname" : "Jagdeesh Shetty",
+    "user_email" : "shettyjm@gmail.com",
+    "role" : "subscriber",
+    "userid" : 114
+    
+}
+*/
     create: function(req, res) {
         var newuser = req.body;
         logger.info('{ create - \n userdata from client');//JSON.stringify(newuser));
@@ -823,8 +855,12 @@ var users = {
             newuser.user_pass = password;
             
 
-            //logger.info('userdata from client', JSON.stringify(newuser));
+            logger.info('userdata from client', JSON.stringify(newuser));
+            var hrstart = process.hrtime();
             utils.getNextSequence(req.db, 'userid', function(err, obj) {
+                var startt = +new Date();
+                     utils.reportExecTime(hrstart,"generated next sadhakas id ",true);         
+                     
                 if (err) logger.info(err);
                 else {
                     
@@ -846,8 +882,9 @@ var users = {
 
                     newuser.track = [];
                     utils.getSadhanas(function(err, commonsadhanas) {
-
-
+var endt = +new Date();
+                      console.log("utils.getSadhanas copmlete at ",endt);
+                      //utils.reportExecTime(hrstart,"new sadhaka saved in ",true);         
 
                         //_.each(commonsadhanas, function(obj1){logger.info("next sadhana"+JSON.stringify(obj1));});
                         var usercommonsadhanas = _.each(commonsadhanas.sadhanaslist.sadhanas, function(obj) {
@@ -869,8 +906,15 @@ var users = {
                             "values": usercommonvalues,
                         }];
 
+
+
                         req.db.collection('sadhakas').save(newuser,
                             function(err, data) {
+
+                               // endt = +new Date();
+                              // console.log("created  new sadhaka at  ",endt);
+                                    utils.reportExecTime(hrstart,"new sadhaka saved in  ",true);         
+
 
                                 var response = {
                                     "userid": newuser.userid
@@ -1125,7 +1169,8 @@ function sadhakaSadhanaList(req, callback) {
      var customvalues=_.findWhere(data[0].sadhanaregistrations, {
                      "type": 6
                  });
-
+          logger.info(JSON.stringify(data[0].sadhanaregistrations)); 
+          logger.info("customvalues ",JSON.stringify(customvalues));
           if(customvalues !=null){
 
         	  customvalues.values=_.map(customvalues.values,function(obj,key){

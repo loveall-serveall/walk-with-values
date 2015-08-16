@@ -71,16 +71,26 @@ var users = {
                     type: 4,
                     tracked: []
                 },
+                {
+                    type: 5,
+                    tracked: []
+                },
+                {
+                    type: 6,
+                    tracked: []
+                }
 
             ];
 
 
             
             var type2tracks = [];
-            var type3tracks = [];
-            var type4tracks = [];
+            //var type3tracks = [];
+            //var type4tracks = [];
+          //  var type5tracks = [];
 
-            if (mytrack.length == 1 && mytrack[0].track.length == 1) {
+            if (mytrack.length == 1 
+                && mytrack[0].track.length == 1) {
 
                 // merge the track data
 
@@ -88,12 +98,14 @@ var users = {
 
                 
                 type2tracks = mytrack[0].track[0].tracked[1].tracked;
-                type3tracks = mytrack[0].track[0].tracked[2].tracked;
-                type4tracks = mytrack[0].track[0].tracked[3].tracked;
+              //  type3tracks = mytrack[0].track[0].tracked[2].tracked;
+              //  type4tracks = mytrack[0].track[0].tracked[3].tracked;
+            //    type5tracks = mytrack[0].track[0].tracked[4].tracked;
                 
                 newmySadhanasTracked[1].tracked = type2tracks;
-                newmySadhanasTracked[2].tracked = type3tracks;
-                newmySadhanasTracked[3].tracked = type4tracks;
+               // newmySadhanasTracked[2].tracked = type3tracks;
+              //  newmySadhanasTracked[3].tracked = type4tracks;
+              //  newmySadhanasTracked[4].tracked = type5tracks;
 
                 //logger.info("type1tracks",type1tracks);
 
@@ -144,6 +156,29 @@ var users = {
                // console.log("obj", obj);
                 return parseInt(obj);
             });
+
+
+            newmySadhanasTracked[4].tracked = _.map(req.body.fields.common_value_score_list,
+           
+            function(obj, key) {
+                console.log("obj", obj, " key" ,key);
+                var valueTrack = {"id":parseInt(key),"scale":parseInt(obj)}
+
+                //return parseInt(valueTrack);
+                return valueTrack;
+            });
+
+
+           newmySadhanasTracked[5].tracked = _.map(req.body.fields.custom_value_score_list,
+           
+            function(obj, key) {
+                console.log("obj", obj, " key" ,key);
+                var valueTrack = {"id":parseInt(key),"scale":parseInt(obj)}
+
+                //return parseInt(valueTrack);
+                return valueTrack;
+            });
+   
        
 
 
@@ -238,7 +273,7 @@ var users = {
                         "track.fordate.$": 1
                     }).limit(1).toArray(function(err, fordatetrack) {
 
-                        // logger.info("Track for the userid is ",JSON.stringify(fordatetrack[0]));
+                        //logger.info("Track for the userid is ",JSON.stringify(fordatetrack[0]));
 
                         var type1tracks = [];
                         var type2tracks = [];
@@ -251,15 +286,15 @@ var users = {
 
                             // merge the track data
 
-                            //   logger.info("data specific track exists",mytrack[0].track[0]);
+                              //logger.info("data specific track exists",mytrack[0].track[0]);
 
                             type1tracks = fordatetrack[0].track[0].tracked[0].tracked;
                             type2tracks = fordatetrack[0].track[0].tracked[1].tracked;
                             type3tracks = fordatetrack[0].track[0].tracked[2].tracked;
                             type4tracks = fordatetrack[0].track[0].tracked[3].tracked;
-                            //type5tracks = fordatetrack[0].track[0].tracked[4].tracked;
-                            //type6tracks = fordatetrack[0].track[0].tracked[5].tracked;
-                            //logger.info("type1tracks",type1tracks);
+                            type5tracks = fordatetrack[0].track[0].tracked[4].tracked;
+                            type6tracks = fordatetrack[0].track[0].tracked[5].tracked;
+                            //logger.info("type5tracks",type5tracks);
 
 
 
@@ -327,15 +362,20 @@ var users = {
                             });
 
                         if (sadhanasregs.length > 4){
+
+                           // logger.info(" ---> common values tracked found")
                             sadhanasregs[4].values = _.each(sadhanasregs[4].values, function(obj) {
-                                //logger.info("next sadhana"+JSON.stringify(obj));
+                             //   logger.info("next value"+JSON.stringify(obj));
+                               // logger.info("type5 track",type5tracks);
                             	 var item = _.find(type5tracks, function(track){
+                                 //   logger.info("next type5track ",track);
                             		return track.id === obj.id;
                             	});
+                                // logger.info("next item" ,item);
                                 if (!_.isUndefined(item)) {
                                     return _.extend(obj, {
                                         "checked": true,
-                                        "score": item.score
+                                        "scale": item.scale
                                     });
 
                                 } else {
@@ -346,6 +386,36 @@ var users = {
 
                             });
                         }
+
+
+  //custom values
+                      if (sadhanasregs.length > 5){
+
+                           // logger.info(" ---> common values tracked found")
+                            sadhanasregs[5].values = _.each(sadhanasregs[5].values, function(obj) {
+                             //   logger.info("next value"+JSON.stringify(obj));
+                               // logger.info("type5 track",type5tracks);
+                                 var item = _.find(type6tracks, function(track){
+                                 //   logger.info("next type5track ",track);
+                                    return track.id === obj.id;
+                                });
+                                // logger.info("next item" ,item);
+                                if (!_.isUndefined(item)) {
+                                    return _.extend(obj, {
+                                        "checked": true,
+                                        "scale": item.scale
+                                    });
+
+                                } else {
+                                    return _.extend(obj, {
+                                        "checked": false
+                                    });
+                                }
+
+                            });
+                        }
+
+
 
                         res.end(JSON.stringify(sadhanasregs));
                          logger.info("           } \n");
@@ -1169,8 +1239,8 @@ function sadhakaSadhanaList(req, callback) {
      var customvalues=_.findWhere(data[0].sadhanaregistrations, {
                      "type": 6
                  });
-          logger.info(JSON.stringify(data[0].sadhanaregistrations)); 
-          logger.info("customvalues ",JSON.stringify(customvalues));
+         // logger.info(JSON.stringify(data[0].sadhanaregistrations)); 
+          //logger.info("customvalues ",JSON.stringify(customvalues));
           if(customvalues !=null){
 
         	  customvalues.values=_.map(customvalues.values,function(obj,key){

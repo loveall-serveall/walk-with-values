@@ -441,7 +441,7 @@ var users = {
         }
         //console.log('++++++++:::::id',req.params.userid," sadhanlist" ,req.body);
 
-        logger.info('++++++++++++++++ {sadhanasTracked - \n userid', req.params.userid, " sadhanlist : ", "fordateRequest :", fordateRequest," payload :",req.body);
+        logger.info('++++++++++++++++ {sadhanasTracked - \n userid', req.params.userid, " sadhanlist : ", "fordateRequest :", fordateRequest," payload :",JSON.stringify(req.body));
 
         // update process
         // 1. read curent tracking.
@@ -468,7 +468,14 @@ var users = {
                 }, {
                     type: 4,
                     tracked: []
-                },
+                },{
+                    type: 5,
+                    tracked: []
+                },{
+                    type: 6,
+                    tracked: []
+                }
+
 
             ];
 
@@ -477,6 +484,7 @@ var users = {
             var type2tracks = [];
             var type3tracks = [];
             var type4tracks = [];
+            var type5tracks = [];
 
             if (mytrack.length == 1 && mytrack[0].track.length == 1) {
 
@@ -488,10 +496,14 @@ var users = {
                 type2tracks = mytrack[0].track[0].tracked[1].tracked;
                 type3tracks = mytrack[0].track[0].tracked[2].tracked;
                 type4tracks = mytrack[0].track[0].tracked[3].tracked;
+                type5tracks = mytrack[0].track[0].tracked[4].tracked;
+                type6tracks = mytrack[0].track[0].tracked[5].tracked;
                 newmySadhanasTracked[0].tracked = type1tracks;
                 newmySadhanasTracked[1].tracked = type2tracks;
                 newmySadhanasTracked[2].tracked = type3tracks;
                 newmySadhanasTracked[3].tracked = type4tracks;
+                newmySadhanasTracked[4].tracked = type5tracks;
+                newmySadhanasTracked[5].tracked = type6tracks;
 
                 //logger.info("type1tracks",type1tracks);
 
@@ -583,12 +595,52 @@ var users = {
                         }
                     });
                 newmySadhanasTracked[3].tracked = type4tracks;
+            } else if (sadhanatype == 5) {
+
+                _.each(req.body[0].tracked,
+                    function(obj) {
+                          // first remove if exist
+                        type5tracks = _.reject(type5tracks,
+                        function(rejobj) {
+
+                                    return obj.id == rejobj.id;
+                        });
+
+                        logger.info("after filtering out",JSON.stringify(type5tracks));
+
+                        //push with new values
+
+                        var newType5track={"id":parseInt(obj.id),"scale":parseInt(obj.scale)};
+                            type5tracks.push(newType5track);
+
+                    });
+                newmySadhanasTracked[4].tracked = type5tracks;
+            } else if (sadhanatype == 6) {
+
+                _.each(req.body[0].tracked,
+                    function(obj) {
+                          // first remove if exist
+                        type6tracks = _.reject(type6tracks,
+                        function(rejobj) {
+
+                                    return obj.id == rejobj.id;
+                        });
+
+                        logger.info("after filtering out",JSON.stringify(type6tracks));
+
+                        //push with new values
+
+                        var newType6track={"id":parseInt(obj.id),"scale":parseInt(obj.scale)};
+                            type6tracks.push(newType6track);
+
+                    });
+                newmySadhanasTracked[5].tracked = type6tracks;
             }
 
 
 
 
-            console.log("mySadhanasTracked", newmySadhanasTracked);
+            //console.log("mySadhanasTracked", newmySadhanasTracked);
             // console.log("mySadhanasTracked" ,_.pluck(mySadhanasTracked,'id'));
 
 
